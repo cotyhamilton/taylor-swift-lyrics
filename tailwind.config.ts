@@ -50,17 +50,17 @@ const config: Config = {
 				}
 			},
 			backgroundImage: {
-				"the-tortured-poets-department": "url('/images/blurred/the-tortured-poets-department.jpg')",
-				midnights: "url('/images/blurred/midnights.jpg')",
-				evermore: "url('/images/blurred/evermore.jpg')",
-				folklore: "url('/images/blurred/folklore.jpg')",
-				lover: "url('/images/blurred/lover.jpg')",
-				reputation: "url('/images/blurred/reputation.jpg')",
-				"1989": "url('/images/blurred/1989.jpg')",
-				red: "url('/images/blurred/red.jpg')",
-				"speak-now": "url('/images/blurred/speak-now.jpg')",
-				fearless: "url('/images/blurred/fearless.jpg')",
-				"taylor-swift": "url('/images/blurred/taylor-swift.jpg')"
+				"the-tortured-poets-department": "url('/images/the-tortured-poets-department.jpg')",
+				midnights: "url('/images/midnights.jpg')",
+				evermore: "url('/images/evermore.jpg')",
+				folklore: "url('/images/folklore.jpg')",
+				lover: "url('/images/lover.jpg')",
+				reputation: "url('/images/reputation.jpg')",
+				"1989": "url('/images/1989.jpg')",
+				red: "url('/images/red.jpg')",
+				"speak-now": "url('/images/speak-now.jpg')",
+				fearless: "url('/images/fearless.jpg')",
+				"taylor-swift": "url('/images/taylor-swift.jpg')"
 			},
 			borderRadius: {
 				lg: "var(--radius)",
