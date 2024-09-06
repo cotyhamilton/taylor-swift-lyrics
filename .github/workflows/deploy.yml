@@ -9,6 +9,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+      DENO_FUTURE: "1"
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -23,13 +25,13 @@ jobs:
         with:
           deno-version: v1.x
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
       - name: Install step
         run: "deno install"
+
+      - name: Check step
+        run: |
+          deno task lint
+          deno task check
 
       - name: Build step
         run: "deno task build"
