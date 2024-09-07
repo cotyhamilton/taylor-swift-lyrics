@@ -35,6 +35,12 @@
 		return searchParams.toString();
 	}
 
+	function count(item: "album" | "song") {
+		return foundLyrics
+			.map(({ [item]: el }) => el)
+			.filter((value, index, self) => self.indexOf(value) === index).length;
+	}
+
 	function findLyrics(word: string) {
 		const foundLyrics: Lyric[] = [];
 		if (word.length >= 3) {
@@ -89,7 +95,7 @@
 
 	{#if hasSearched && search.length}
 		<p class="mb-4 text-sm text-muted-foreground">
-			{`About ${foundLyrics.length} result${foundLyrics.length === 1 ? "" : "s"}`}
+			{`Found ${foundLyrics.length} lyric${foundLyrics.length === 1 ? "" : "s"}, ${count("song")} song${count("song") === 1 ? "" : "s"}, and ${count("album")} album${count("album") === 1 ? "" : "s"}`}
 		</p>
 	{/if}
 
