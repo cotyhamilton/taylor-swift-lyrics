@@ -64,7 +64,7 @@
 	foundLyrics = findLyrics(searchQuery);
 
 	$effect(() => {
-		search = $page.url.searchParams.getAll("search").at(-1) ?? "";
+		search = ($page.url.searchParams.getAll("search").at(-1) ?? "").trim();
 		searchHistory = $page.url.searchParams.getAll("search");
 	});
 
