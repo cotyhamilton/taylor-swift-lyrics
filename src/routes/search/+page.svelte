@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>taylor swift data.lyrics</title>
+	<title>taylor swift lyrics search</title>
 </svelte:head>
 
 <div class="mt-6 md:mx-12">
