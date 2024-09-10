@@ -122,6 +122,16 @@
 					</div>
 				</Card.Content>
 			</Card.Root>
+		{:else}
+			<picture>
+				<source srcset="/images/taylor-swift-heart-hands.webp" type="image/webp" />
+				<img
+					class="mx-auto fixed bottom-0 left-1/2 transform -translate-x-1/2 max-h-[75vh]"
+					src="/images/taylor-swift-heart-hands.png"
+					loading="lazy"
+					alt="Taylor Swift making heart hands"
+				/>
+			</picture>
 		{/each}
 	</div>
 </div>
