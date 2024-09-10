@@ -1,6 +1,7 @@
 {
   "version": "4",
   "specifiers": {
+    "npm:@eslint/js@^9.9.1": "npm:@eslint/js@9.9.1",
     "npm:@sveltejs/kit@^2.5.20": "npm:@sveltejs/kit@2.5.26_@sveltejs+vite-plugin-svelte@4.0.0-next.7__svelte@5.0.0-next.244___acorn@8.12.1__vite@5.4.3_svelte@5.0.0-next.244__acorn@8.12.1_vite@5.4.3",
     "npm:@sveltejs/vite-plugin-svelte@next": "npm:@sveltejs/vite-plugin-svelte@4.0.0-next.7_svelte@5.0.0-next.244__acorn@8.12.1_vite@5.4.3",
     "npm:@types/eslint@^9.6.0": "npm:@types/eslint@9.6.1",
