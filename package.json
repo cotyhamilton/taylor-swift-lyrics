@@ -14,6 +14,7 @@
 	},
 	"dependencies": {
 		"@eslint/js": "^9.9.1",
+		"@std/log": "npm:@jsr/std__log@^0.224.7",
 		"@sveltejs/kit": "^2.5.20",
 		"@sveltejs/vite-plugin-svelte": "next",
 		"@types/eslint": "^9.6.0",

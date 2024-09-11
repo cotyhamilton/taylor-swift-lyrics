@@ -4,7 +4,10 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			trace: string;
+			logger: import("@std/log").Logger;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

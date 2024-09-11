@@ -2,6 +2,7 @@
   "version": "4",
   "specifiers": {
     "npm:@eslint/js@^9.9.1": "npm:@eslint/js@9.9.1",
+    "npm:@jsr/std__log@^0.224.7": "npm:@jsr/std__log@0.224.7",
     "npm:@sveltejs/kit@^2.5.20": "npm:@sveltejs/kit@2.5.26_@sveltejs+vite-plugin-svelte@4.0.0-next.7__svelte@5.0.0-next.244___acorn@8.12.1__vite@5.4.3_svelte@5.0.0-next.244__acorn@8.12.1_vite@5.4.3",
     "npm:@sveltejs/vite-plugin-svelte@next": "npm:@sveltejs/vite-plugin-svelte@4.0.0-next.7_svelte@5.0.0-next.244__acorn@8.12.1_vite@5.4.3",
     "npm:@types/eslint@^9.6.0": "npm:@types/eslint@9.6.1",
@@ -253,6 +254,35 @@
         "@jridgewell/resolve-uri",
         "@jridgewell/sourcemap-codec"
       ]
+    },
+    "@jsr/std__bytes@1.0.2": {
+      "integrity": "sha512-bkZ1rllRB1qsxFbPqtO1VAYTW2+3ZDmf6pcy8xihKS33r0Z1ly6/E/5DoapnJsNy05LdnANUySWt5kj/awgGdg=="
+    },
+    "@jsr/std__fmt@1.0.2": {
+      "integrity": "sha512-VGilBV5pwG+4nAuEt2ShJtbkfbIf8WgjyKQT+LCpubjILPygeBF3DL2gTsGM5khMLeWb0n46ZE7cnoWBqCuuRw=="
+    },
+    "@jsr/std__fs@1.0.3": {
+      "integrity": "sha512-g0d1Nog9IEZy8S2JtPfOD5aSKyZ67khZBcGg4M9yY/uIxku0BYdgQCJWcIDWyfMsGl8pH/d+fX1tyZBvV6KeFA==",
+      "dependencies": [
+        "@jsr/std__path"
+      ]
+    },
+    "@jsr/std__io@0.224.7": {
+      "integrity": "sha512-0ebQX1nuUjRaPQ1ui5MNSGszTHqNfqGcepfPwaJbWfjoThNDBkGF/pyNakUPBa5ZMArtmh6FbmizaaCOGSyqUw==",
+      "dependencies": [
+        "@jsr/std__bytes"
+      ]
+    },
+    "@jsr/std__log@0.224.7": {
+      "integrity": "sha512-RvV0A8I8mjOhFAKt4tPolO5TaFxdyhwxxf7+ghFHf7psmBAP3y9P9gXk1+frqrohwfKMxF9EXGNsH5iVxhkuJA==",
+      "dependencies": [
+        "@jsr/std__fmt",
+        "@jsr/std__fs",
+        "@jsr/std__io"
+      ]
+    },
+    "@jsr/std__path@1.0.4": {
+      "integrity": "sha512-T3OohXafXcBt0eOSDnBSH44BFmN/q3z0QYWy5vtXMiVCYDQTcJ/SYjra0bbqEo0YuIevANFph9g1rj1ZV9SIew=="
     },
     "@nodelib/fs.scandir@2.1.5": {
       "integrity": "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==",
@@ -1796,6 +1826,7 @@
     "packageJson": {
       "dependencies": [
         "npm:@eslint/js@^9.9.1",
+        "npm:@jsr/std__log@^0.224.7",
         "npm:@sveltejs/kit@^2.5.20",
         "npm:@sveltejs/vite-plugin-svelte@next",
         "npm:@types/eslint@^9.6.0",
