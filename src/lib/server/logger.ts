@@ -2,6 +2,36 @@ import type { Handle } from "@sveltejs/kit";
 import * as log from "@std/log";
 import { dev } from "$app/environment";
 
+// Creates a child logger from a parent logger with optional persistent data
+export function childLogger(
+	logger: log.Logger,
+	data: Record<string, unknown> = {}
+): log.Logger & { data: Record<string, unknown> } {
+	return {
+		...logger,
+		level: logger.level,
+		levelName: logger.levelName,
+		loggerName: logger.loggerName,
+		asString: logger.asString,
+		data,
+		debug: (msg: () => unknown, args: Record<string, unknown> = {}) => {
+			logger.debug(msg, { ...data, ...args });
+		},
+		info: (msg: () => unknown, args: Record<string, unknown> = {}) => {
+			logger.info(msg, { ...data, ...args });
+		},
+		warn: (msg: () => unknown, args: Record<string, unknown> = {}) => {
+			logger.warn(msg, { ...data, ...args });
+		},
+		error: (msg: () => unknown, args: Record<string, unknown> = {}) => {
+			logger.error(msg, { ...data, ...args });
+		},
+		critical: (msg: () => unknown, args: Record<string, unknown> = {}) => {
+			logger.critical(msg, { ...data, ...args });
+		}
+	};
+}
+
 // Set up logging configuration
 log.setup({
 	handlers: {
@@ -34,8 +64,8 @@ export const logHook: Handle = async ({ event, resolve }) => {
 	const trace = crypto.randomUUID();
 	event.locals.trace = trace;
 
-	// Get the logger instance
-	const logger = log.getLogger();
+	// Create logger instance
+	const logger = childLogger(log.getLogger(), { trace });
 	// Save the logger instance to locals
 	event.locals.logger = logger;
 
@@ -47,8 +77,7 @@ export const logHook: Handle = async ({ event, resolve }) => {
 	logger.info("HTTP Request Started", {
 		method: event.request.method,
 		url,
-		["user-agent"]: userAgent,
-		trace
+		["user-agent"]: userAgent
 	});
 
 	// Wait for the request to be processed
@@ -60,8 +89,7 @@ export const logHook: Handle = async ({ event, resolve }) => {
 		url,
 		["user-agent"]: userAgent,
 		duration: `${Date.now() - requestStartTime}ms`,
-		status: response.status,
-		trace
+		status: response.status
 	});
 
 	return response;

@@ -3,7 +3,9 @@
 
 declare global {
 	namespace App {
-		// interface Error {}
+		interface Error {
+			trace: string;
+		}
 		interface Locals {
 			trace: string;
 			logger: import("@std/log").Logger;
