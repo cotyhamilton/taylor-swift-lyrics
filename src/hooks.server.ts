@@ -4,20 +4,15 @@ import { logHook } from "$lib/server/logger";
 
 export const handle = sequence(logHook);
 
+export function isHttpError(e: unknown) {
+	return e instanceof Error && "status" in e;
+}
+
 export const handleError: HandleServerError = async ({ error, event }) => {
 	let message = "uh oh, you need to calm down... try again later";
-	if (error instanceof Error) {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		if (error.status === 404) {
-			message = error.message;
-		}
-		event.locals.logger.error("Error", {
-			error: {
-				...error,
-				stack: error?.stack
-			}
-		});
+
+	if (isHttpError(error) && error.status === 404) {
+		message = error.message;
 	} else {
 		event.locals.logger.error("Error", {
 			error
