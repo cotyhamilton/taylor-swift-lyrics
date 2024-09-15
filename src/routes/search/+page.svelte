@@ -6,19 +6,27 @@
 	import { Input } from "$lib/components/ui/input";
 	import { backgroundImageMap } from "$lib/images";
 	import X from "lucide-svelte/icons/x";
+	import { searchQueryStringSeparator } from "$lib/constants.js";
 
 	const { data } = $props();
 	let input = $state("");
 
 	function appendSearchQueryString(word: string) {
 		const searchParams = new URLSearchParams($page.url.search);
-		searchParams.append("search", word);
+		const current = searchParams.get("search");
+		searchParams.set("search", current ? current + searchQueryStringSeparator + word : word);
 		return searchParams.toString();
 	}
 
-	function popSearchQueryString(word: string) {
+	function popSearchQueryString(index: number) {
 		const searchParams = new URLSearchParams($page.url.search);
-		searchParams.delete("search", word);
+		const search = searchParams.get("search")?.split(searchQueryStringSeparator);
+		search?.splice(index, 1);
+		if (search?.length) {
+			searchParams.set("search", search.join(searchQueryStringSeparator));
+		} else {
+			searchParams.delete("search");
+		}
 		return searchParams.toString();
 	}
 </script>
@@ -48,7 +56,7 @@
 	{/if}
 
 	<div class="my-4 flex gap-2 overflow-x-scroll">
-		{#each data.searchHistory as query}
+		{#each data.searchHistory as query, index}
 			<div class="flex items-center rounded-full bg-muted px-3 py-1 text-sm">
 				<span class="mr-2">
 					{query}
@@ -57,7 +65,7 @@
 					class="text-muted-foreground hover:text-foreground"
 					aria-label={`Remove ${query} from search history`}
 					onclick={() => {
-						goto("?" + popSearchQueryString(query));
+						goto("?" + popSearchQueryString(index));
 					}}
 				>
 					<X size={14} />

@@ -1,6 +1,7 @@
 import type { PageLoad } from "./$types";
 import lyrics from "$lib/data/lyrics.json";
 import type { Lyric } from "$lib/types/lyrics";
+import { searchQueryStringSeparator } from "$lib/constants";
 
 function findLyrics(list: typeof lyrics.data, word: string): Lyric[] {
 	const foundLyrics: Lyric[] = [];
@@ -36,8 +37,8 @@ function count(list: Lyric[], item: "album" | "song") {
 }
 
 export const load: PageLoad = ({ url }) => {
-	const searchHistory = url.searchParams.getAll("search");
-	const search = (url.searchParams.getAll("search").at(-1) ?? "").trim();
+	const searchHistory = url.searchParams.get("search")?.split(searchQueryStringSeparator) ?? [];
+	const search = searchHistory.at(-1)?.trim() ?? "";
 	const foundLyrics = findLyrics(lyrics.data, search);
 
 	return {
