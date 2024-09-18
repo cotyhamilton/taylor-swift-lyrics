@@ -1,7 +1,6 @@
 import type { PageLoad } from "./$types";
 import lyrics from "$lib/data/lyrics.json";
 import type { Lyric } from "$lib/types/lyrics";
-import { searchQueryStringSeparator } from "$lib/constants";
 
 function findLyrics(list: typeof lyrics.data, word: string): Lyric[] {
 	const foundLyrics: Lyric[] = [];
@@ -37,7 +36,7 @@ function count(list: Lyric[], item: "album" | "song") {
 }
 
 export const load: PageLoad = ({ url }) => {
-	const searchHistory = url.searchParams.get("search")?.split(searchQueryStringSeparator) ?? [];
+	const searchHistory = url.searchParams.getAll("search");
 	const search = searchHistory.at(-1)?.trim() ?? "";
 	const foundLyrics = findLyrics(lyrics.data, search);
 
@@ -46,6 +45,7 @@ export const load: PageLoad = ({ url }) => {
 		searchHistory,
 		foundLyrics,
 		albumCount: count(foundLyrics, "album"),
-		songCount: count(foundLyrics, "song")
+		songCount: count(foundLyrics, "song"),
+		query: url.search // forces reload on duplicate search params
 	};
 };

@@ -6,27 +6,20 @@
 	import { Input } from "$lib/components/ui/input";
 	import { backgroundImageMap } from "$lib/images";
 	import X from "lucide-svelte/icons/x";
-	import { searchQueryStringSeparator } from "$lib/constants.js";
 
 	const { data } = $props();
 	let input = $state("");
 
 	function appendSearchQueryString(word: string) {
 		const searchParams = new URLSearchParams($page.url.search);
-		const current = searchParams.get("search");
-		searchParams.set("search", current ? current + searchQueryStringSeparator + word : word);
+		searchParams.append("search", word);
 		return searchParams.toString();
 	}
 
 	function popSearchQueryString(index: number) {
-		const searchParams = new URLSearchParams($page.url.search);
-		const search = searchParams.get("search")?.split(searchQueryStringSeparator);
-		search?.splice(index, 1);
-		if (search?.length) {
-			searchParams.set("search", search.join(searchQueryStringSeparator));
-		} else {
-			searchParams.delete("search");
-		}
+		const search = $page.url.searchParams.getAll("search");
+		search.splice(index, 1);
+		const searchParams = new URLSearchParams(search.map((word) => ["search", word]));
 		return searchParams.toString();
 	}
 </script>
