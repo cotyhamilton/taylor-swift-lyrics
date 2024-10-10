@@ -41,7 +41,7 @@
 
 	let data: Props = $props();
 
-	const AlbumImageMap: Record<string, unknown> = {
+	const AlbumImageMap: Record<string, typeof TaylorSwiftBGImage> = {
 		"Taylor Swift": TaylorSwiftAlbumImage,
 		"Fearless (Taylor's Version)": FearlessAlbumImage,
 		"Speak Now (Taylor's Version)": SpeakNowAlbumImage,
@@ -55,7 +55,7 @@
 		"The Tortured Poets Department": TTPDAlbumImage
 	};
 
-	const BackgroundImageMap: Record<string, unknown> = {
+	const BackgroundImageMap: Record<string, typeof TaylorSwiftBGImage> = {
 		"Taylor Swift": TaylorSwiftBGImage,
 		"Fearless (Taylor's Version)": FearlessBGImage,
 		"Speak Now (Taylor's Version)": SpeakNowBGImage,
