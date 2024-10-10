@@ -1,20 +1,13 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
-	import * as Card from "$lib/components/ui/card";
-	import { Badge } from "$lib/components/ui/badge";
 	import { Input } from "$lib/components/ui/input";
-	import { backgroundImageMap } from "$lib/images";
 	import X from "lucide-svelte/icons/x";
+	import SearchCard from "./search-card.svelte";
+	import { appendSearchQueryString } from "./utils";
 
 	const { data } = $props();
 	let input = $state("");
-
-	function appendSearchQueryString(word: string) {
-		const searchParams = new URLSearchParams($page.url.search);
-		searchParams.append("search", word);
-		return searchParams.toString();
-	}
 
 	function popSearchQueryString(index: number) {
 		const search = $page.url.searchParams.getAll("search");
@@ -34,7 +27,7 @@
 		onsubmit={async (e) => {
 			e.preventDefault();
 			if (input) {
-				goto("?" + appendSearchQueryString(input));
+				goto("?" + appendSearchQueryString($page.url, input));
 				input = "";
 			}
 		}}
@@ -69,75 +62,8 @@
 
 	<div class="my-4 space-y-4">
 		{#each data.foundLyrics as { album, song, lineNumber, lyric, prev, next, section } (song + lineNumber)}
-			<Card.Root class={`${backgroundImageMap[album]} bg-cover bg-center text-primary-foreground`}>
-				<Card.Header>
-					<Card.Title>
-						<p class="text-shadow">
-							<a class="hover:underline" href={`/albums/${album}`}>{album}</a>
-						</p>
-						<p>
-							<a
-								class="text-shadow text-2xl font-bold hover:underline"
-								href={`/albums/${album}/${encodeURIComponent(song)}`}>{song}</a
-							>
-						</p>
-						<Badge variant="secondary">{section}</Badge>
-					</Card.Title>
-				</Card.Header>
-				<Card.Content>
-					<div class="text-shadow grid grid-cols-[auto,1fr]">
-						<span class="w-8 pr-2 text-right font-mono text-muted">
-							{lineNumber - 1}
-						</span>
-						<p class="text-muted">
-							{prev}
-						</p>
-					</div>
-					<div class="text-shadow grid grid-cols-[auto,1fr]">
-						<span class="w-8 pr-2 text-right font-mono text-xl">
-							{lineNumber}
-						</span>
-						<p class="text-lg font-bold">
-							<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-							{@html lyric
-								.split(" ")
-								.map(
-									(word) =>
-										`<a
-											class="hover:underline"
-											href="?${appendSearchQueryString(word.replace(",", "").toLowerCase())}"
-										>
-										${word.replace(new RegExp(data.search, "gi"), (match) => `<u>${match}</u>`)}
-										</a>`
-								)
-								.join(" ")}
-						</p>
-					</div>
-					<div class="text-shadow grid grid-cols-[auto,1fr]">
-						<span class="w-8 pr-2 text-right font-mono text-muted">
-							{lineNumber + 1}
-						</span>
-						<p class="text-muted">
-							{next}
-						</p>
-					</div>
-				</Card.Content>
-			</Card.Root>
-		{:else}
-			<picture>
-				<source srcset="/images/taylor-swift-heart-hands.webp" type="image/webp" />
-				<img
-					class="mx-auto fixed bottom-0 left-1/2 transform -translate-x-1/2 max-h-[70vh]"
-					src="/images/taylor-swift-heart-hands.png"
-					alt="Taylor Swift making heart hands"
-				/>
-			</picture>
+			<SearchCard {album} {song} {lineNumber} {lyric} {prev} {next} {section} search={data.search}
+			></SearchCard>
 		{/each}
 	</div>
 </div>
-
-<style>
-	.text-shadow {
-		text-shadow: 1px 1px 18px rgba(0, 0, 0, 0.25);
-	}
-</style>
