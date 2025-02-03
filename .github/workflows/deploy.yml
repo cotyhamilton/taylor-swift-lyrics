@@ -38,5 +38,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "taylor-swift-lyrics"
-          entrypoint: "mod.ts"
+          entrypoint: "index.js"
           root: "build"
