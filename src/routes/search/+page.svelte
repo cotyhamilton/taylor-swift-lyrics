@@ -21,19 +21,29 @@
 	<title>taylor swift lyrics search</title>
 </svelte:head>
 
-<div class="mt-6 md:mx-12">
-	<form
-		class="mb-4"
-		onsubmit={async (e) => {
-			e.preventDefault();
-			if (input) {
-				goto("?" + appendSearchQueryString($page.url, input));
-				input = "";
-			}
-		}}
-	>
-		<Input type="search" enterkeyhint="search" placeholder="search lyrics" bind:value={input} />
-	</form>
+<div class="md:mx-12">
+	<div class={!data.foundLyrics.length ? "flex min-h-screen items-center" : ""}>
+		<div class="w-full">
+			<h1
+				class={(!data.foundLyrics.length ? "text-6xl lg:text-8xl" : "text-4xl") +
+					" my-6 text-center font-bold"}
+			>
+				<a href="/">taylor swift lyrics</a>
+			</h1>
+			<form
+				class="mb-4 mt-6"
+				onsubmit={async (e) => {
+					e.preventDefault();
+					if (input) {
+						goto("?" + appendSearchQueryString($page.url, input));
+						input = "";
+					}
+				}}
+			>
+				<Input type="search" enterkeyhint="search" placeholder="search lyrics" bind:value={input} />
+			</form>
+		</div>
+	</div>
 
 	{#if data.search.length}
 		<p class="mb-4 text-sm text-muted-foreground">
