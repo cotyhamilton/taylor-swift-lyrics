@@ -1,15 +1,6 @@
 {
 	"imports": {
-		"assert": "node:assert",
-		"buffer": "node:buffer",
-		"clsx": "npm:clsx@^2.1.1",
-		"events": "node:events",
-		"fs": "node:fs",
-		"module": "node:module",
-		"path": "node:path",
-		"pino": "npm:pino@^9.6.0",
-		"url": "node:url",
-		"util": "node:util",
-		"worker_threads": "node:worker_threads"
+		"@std/log": "jsr:@std/log@^0.224.14",
+		"clsx": "npm:clsx@^2.1.1"
 	}
 }

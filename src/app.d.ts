@@ -8,7 +8,7 @@ declare global {
 		}
 		interface Locals {
 			trace: string;
-			logger: import("pino").Logger;
+			logger: import("@std/log").Logger;
 		}
 		// interface PageData {}
 		// interface PageState {}
