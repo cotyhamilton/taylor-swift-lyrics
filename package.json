@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev | pino-pretty",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,6 +14,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.9.1",
+		"@std/log": "npm:@jsr/std__log@^0.224.14",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/enhanced-img": "^0.3.9",
 		"@sveltejs/kit": "^2.5.27",
