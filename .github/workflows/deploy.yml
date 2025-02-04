@@ -34,10 +34,6 @@ jobs:
       - name: Build step
         run: "deno task build"
 
-      - name: Debug
-        run: |
-          cp deno.json build/deno.json
-
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
