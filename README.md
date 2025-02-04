@@ -6,12 +6,6 @@ Data from [cotyhamilton/taylor-swift-lyrics-db](https://github.com/cotyhamilton/
 
 ## development
 
-Config
-
-```bash
-export DENO_FUTURE=1
-```
-
 Install dependencies
 
 ```bash
