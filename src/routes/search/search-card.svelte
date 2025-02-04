@@ -108,7 +108,7 @@
 			</Card.Title>
 		</Card.Header>
 		<Card.Content>
-			<div class="text-shadow grid grid-cols-[auto,1fr]">
+			<div class="text-shadow grid grid-cols-[auto_1fr]">
 				<span class="w-8 pr-2 text-right font-mono text-muted">
 					{data.lineNumber - 1}
 				</span>
@@ -116,7 +116,7 @@
 					{data.prev}
 				</p>
 			</div>
-			<div class="text-shadow grid grid-cols-[auto,1fr]">
+			<div class="text-shadow grid grid-cols-[auto_1fr]">
 				<span class="w-8 pr-2 text-right font-mono text-xl">
 					{data.lineNumber}
 				</span>
@@ -136,7 +136,7 @@
 						.join(" ")}
 				</p>
 			</div>
-			<div class="text-shadow grid grid-cols-[auto,1fr]">
+			<div class="text-shadow grid grid-cols-[auto_1fr]">
 				<span class="w-8 pr-2 text-right font-mono text-muted">
 					{data.lineNumber + 1}
 				</span>
