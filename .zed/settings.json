@@ -1,0 +1,11 @@
+{
+	"lsp": {
+		"deno": {
+			"settings": {
+				"deno": {
+					"enable": false
+				}
+			}
+		}
+	}
+}
