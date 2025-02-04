@@ -1992,6 +1992,10 @@
     }
   },
   "workspace": {
+    "dependencies": [
+      "npm:clsx@^2.1.1",
+      "npm:pino@^9.6.0"
+    ],
     "packageJson": {
       "dependencies": [
         "npm:@eslint/js@^9.9.1",
@@ -2001,14 +2005,12 @@
         "npm:@sveltejs/vite-plugin-svelte@next",
         "npm:@types/eslint@^9.6.0",
         "npm:autoprefixer@^10.4.19",
-        "npm:clsx@^2.1.1",
         "npm:eslint-config-prettier@^9.1.0",
         "npm:eslint-plugin-svelte@^2.45.1",
         "npm:eslint@9",
         "npm:globals@15",
         "npm:lucide-svelte@0.438",
         "npm:pino-pretty@13",
-        "npm:pino@^9.6.0",
         "npm:postcss@^8.4.38",
         "npm:prettier-plugin-svelte@^3.2.6",
         "npm:prettier-plugin-tailwindcss@~0.6.4",
