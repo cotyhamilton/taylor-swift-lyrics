@@ -34,6 +34,10 @@ jobs:
       - name: Build step
         run: "deno task build"
 
+      - name: Debug
+        run: |
+          echo '{"imports": {"pino": "npm:pino@^9.6.0"}}' >> build/deno.json
+
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:

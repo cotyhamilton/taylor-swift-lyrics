@@ -3,7 +3,10 @@ import type { Handle } from "@sveltejs/kit";
 import { pino } from "pino";
 
 export const logger = pino({
-	level: env.LOG_LEVEL || "info"
+	level: env.LOG_LEVEL || "info",
+	serializers: {
+		error: pino.stdSerializers.err
+	}
 });
 
 // Handle function for logging HTTP requests.
