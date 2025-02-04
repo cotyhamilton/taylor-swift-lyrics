@@ -1,0 +1,5 @@
+{
+	"imports": {
+		"pino": "npm:pino@^9.6.0"
+	}
+}

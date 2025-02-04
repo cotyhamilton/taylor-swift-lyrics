@@ -36,7 +36,7 @@ jobs:
 
       - name: Debug
         run: |
-          echo '{"imports": {"pino": "npm:pino@^9.6.0"}}' >> build/deno.json
+          cp deno.json build/deno.json
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
