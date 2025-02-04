@@ -1,6 +1,6 @@
 {
 	"imports": {
-		"@std/log": "jsr:@std/log@^0.224.14",
+		"@std/log": "jsr:@std/log@^0.224.7",
 		"clsx": "npm:clsx@^2.1.1"
 	}
 }

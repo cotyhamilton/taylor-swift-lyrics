@@ -12,6 +12,7 @@ export function childLogger(
 		level: logger.level,
 		levelName: logger.levelName,
 		loggerName: logger.loggerName,
+		asString: logger.asString,
 		data,
 		debug: (msg: () => unknown, args: Record<string, unknown> = {}) => {
 			logger.debug(msg, { ...data, ...args });
