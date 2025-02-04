@@ -71,7 +71,7 @@
 </script>
 
 <Card.Root
-	class="card-skeumorphic hover:card-hover relative transform overflow-hidden text-primary-foreground shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+	class="card-skeumorphic hover:card-hover text-primary-foreground relative transform overflow-hidden shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
 >
 	<enhanced:img
 		class="absolute inset-0 z-0 h-full w-full object-cover"
@@ -109,7 +109,7 @@
 		</Card.Header>
 		<Card.Content>
 			<div class="text-shadow grid grid-cols-[auto_1fr]">
-				<span class="w-8 pr-2 text-right font-mono text-muted">
+				<span class="text-muted w-8 pr-2 text-right font-mono">
 					{data.lineNumber - 1}
 				</span>
 				<p class="text-muted">
@@ -137,7 +137,7 @@
 				</p>
 			</div>
 			<div class="text-shadow grid grid-cols-[auto_1fr]">
-				<span class="w-8 pr-2 text-right font-mono text-muted">
+				<span class="text-muted w-8 pr-2 text-right font-mono">
 					{data.lineNumber + 1}
 				</span>
 				<p class="text-muted">
