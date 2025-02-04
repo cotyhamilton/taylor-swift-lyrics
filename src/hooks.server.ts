@@ -14,9 +14,11 @@ export const handleError: HandleServerError = async ({ error, event }) => {
 	if (isHttpError(error) && error.status === 404) {
 		message = error.message;
 	} else {
-		event.locals.logger.error("Error", {
-			error
-		});
+		const err =
+			error instanceof Error
+				? { name: error.name, message: error.message, stack: error.stack }
+				: { message: String(error) };
+		event.locals.logger.error("Error", { error: err });
 	}
 
 	return {
