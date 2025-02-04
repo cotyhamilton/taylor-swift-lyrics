@@ -14,11 +14,21 @@ export const handleError: HandleServerError = async ({ error, event }) => {
 	if (isHttpError(error) && error.status === 404) {
 		message = error.message;
 	} else {
-		const err =
+		const errorObj =
 			error instanceof Error
-				? { name: error.name, message: error.message, stack: error.stack }
+				? {
+						name: error.name,
+						message: error.message,
+						stack: error.stack,
+						...Object.fromEntries(
+							Object.entries(error).map(([key, value]) => [
+								key,
+								typeof value === "object" ? JSON.stringify(value) : value
+							])
+						)
+					}
 				: { message: String(error) };
-		event.locals.logger.error("Error", { error: err });
+		event.locals.logger.error("Error", { error: errorObj });
 	}
 
 	return {
