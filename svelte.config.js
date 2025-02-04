@@ -24,10 +24,6 @@ const config = {
 						path.join(process.cwd(), "deno.json"),
 						path.join(process.cwd(), "build/deno.json")
 					);
-					fs.copyFileSync(
-						path.join(process.cwd(), "deno.lock"),
-						path.join(process.cwd(), "build/deno.lock")
-					);
 				}
 			};
 		})()
