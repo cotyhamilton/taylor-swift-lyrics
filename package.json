@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev | pino-pretty",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -14,7 +14,6 @@
 	},
 	"dependencies": {
 		"@eslint/js": "^9.19.0",
-		"@std/log": "npm:@jsr/std__log@^0.224.7",
 		"@sveltejs/adapter-node": "^5.2.12",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"@sveltejs/kit": "^2.17.1",
@@ -28,6 +27,8 @@
 		"eslint-plugin-svelte": "^2.46.1",
 		"globals": "^15.14.0",
 		"lucide-svelte": "^0.474.0",
+		"pino": "^9.6.0",
+		"pino-pretty": "^13.0.0",
 		"postcss": "^8.5.1",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
