@@ -19,10 +19,14 @@ const config = {
 				...nodeAdapter,
 				adapt: async (builder) => {
 					await nodeAdapter.adapt(builder);
-					// copy deno.json after the build is complete
+					// copy deno.json, deno.lock after the build is complete
 					fs.copyFileSync(
 						path.join(process.cwd(), "deno.json"),
 						path.join(process.cwd(), "build/deno.json")
+					);
+					fs.copyFileSync(
+						path.join(process.cwd(), "deno.lock"),
+						path.join(process.cwd(), "build/deno.lock")
 					);
 				}
 			};
