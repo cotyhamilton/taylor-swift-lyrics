@@ -6,6 +6,7 @@
 !/deno.json
 !/deno.lock
 !/package.json
+!/postcss.config.js
 !/svelte.config.js
 !/tailwind.config.ts
 !/tsconfig.json

@@ -1,4 +1,4 @@
-FROM denoland/deno:debian AS build
+FROM denoland/deno:ubuntu AS build
 WORKDIR /app
 COPY package.json ./
 COPY deno.* ./
@@ -7,8 +7,9 @@ COPY . .
 RUN deno task build
 
 FROM denoland/deno:alpine AS runtime
-COPY --from=build /app/build /home/deno
-USER deno
 WORKDIR /home/deno
+COPY --from=build /app/build /home/deno
+RUN deno install
+USER deno
 EXPOSE 3000
 CMD ["deno", "run", "-REN", "--allow-sys", "index.js"]
